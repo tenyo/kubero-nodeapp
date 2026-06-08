@@ -1,13 +1,11 @@
-FROM node:17-alpine as base
+FROM node:22-alpine
 ENV NODE_ENV=production
 WORKDIR /app
 
-COPY "." "/app"
+COPY package*.json ./
+RUN npm ci --omit=dev
 
-RUN npm ci --production
-#RUN npm ci --production \
-#    && npm ci --production=false\
-#    && cd client \
-#    && npm run build
+COPY . .
 
-CMD [ "node", "index.js" ]
+EXPOSE 9090
+CMD ["node", "index.js"]
