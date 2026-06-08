@@ -1,4 +1,3 @@
 # example-nodeapp
-Simple example Node app
 
-.
+Simple example Node app for testing packaging and deployment.
